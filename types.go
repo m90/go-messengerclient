@@ -29,6 +29,26 @@ type MessageAttachmentPayload struct {
 	Elements     *[]AttachmentElement `json:"elements,omitempty"`
 }
 
+// AddButton adds an AttachmentButton to an AttachmentPayload
+// in a nil-safe way
+func (pl *MessageAttachmentPayload) AddButton(btn AttachmentButton) {
+	if pl.Buttons == nil {
+		pl.Buttons = &[]AttachmentButton{btn}
+	} else {
+		*pl.Buttons = append(*pl.Buttons, btn)
+	}
+}
+
+// AddElement adds an AttachmentElement to an AttachmentPayload
+// in a nil-safe way
+func (pl *MessageAttachmentPayload) AddElement(el AttachmentElement) {
+	if pl.Elements == nil {
+		pl.Elements = &[]AttachmentElement{el}
+	} else {
+		*pl.Elements = append(*pl.Elements, el)
+	}
+}
+
 // AttachmentButton describes a button contained in an attachment
 type AttachmentButton struct {
 	Type    string `json:"type,omitempty"`
@@ -44,6 +64,16 @@ type AttachmentElement struct {
 	Subtitle      string              `json:"subtitle,omitempty"`
 	DefaultAction *AttachmentAction   `json:"default_action,omitempty"`
 	Buttons       *[]AttachmentButton `json:"buttons,omitempty"`
+}
+
+// AddButton adds an AttachmentButton to an AttachmentElement
+// in a nil-safe way
+func (ae *AttachmentElement) AddButton(btn AttachmentButton) {
+	if ae.Buttons == nil {
+		ae.Buttons = &[]AttachmentButton{btn}
+	} else {
+		*ae.Buttons = append(*ae.Buttons, btn)
+	}
 }
 
 // AttachmentAction describes an action contained in an attachment
