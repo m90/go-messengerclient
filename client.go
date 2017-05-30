@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-const endpoint = "https://graph.facebook.com/v2.6/me/messages"
+var endpoint = "https://graph.facebook.com/v2.6/me/messages"
 
 // Client wraps a configured instance
 type Client struct {
