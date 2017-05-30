@@ -9,15 +9,15 @@ func NewMessagePayload(senderID string, msg *Message) *MessagePayload {
 	}
 }
 
-// NewTextPayload creates the payload for a basic text message
-func NewTextPayload(message string) *Message {
+// NewTextMessage creates the payload for a basic text message
+func NewTextMessage(message string) *Message {
 	return &Message{
 		Text: message,
 	}
 }
 
-// NewImagePayload creates the payload for a basic image message
-func NewImagePayload(imageURL string) *Message {
+// NewImageMessage creates the payload for a basic image message
+func NewImageMessage(imageURL string) *Message {
 	return &Message{
 		Attachment: &MessageAttachment{
 			Type: "image",
@@ -35,5 +35,13 @@ func NewPostbackButton(title, postback string) *AttachmentButton {
 		Title:   title,
 		Payload: postback,
 		Type:    "postback",
+	}
+}
+
+// NewMessageAttachment returns a attachment template of the given types
+func NewMessageAttachment(attachmentType, templateType string) *MessageAttachment {
+	return &MessageAttachment{
+		Type:    attachmentType,
+		Payload: &MessageAttachmentPayload{TemplateType: "generic"},
 	}
 }
