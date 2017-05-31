@@ -1,7 +1,9 @@
 package msngrclient
 
-import "testing"
-import "reflect"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestAddButton_Attachment(t *testing.T) {
 	tests := []struct {

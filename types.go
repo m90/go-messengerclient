@@ -3,9 +3,9 @@ package msngrclient
 // MessagePayload describes the request body
 // that will be sent to the facebook API
 type MessagePayload struct {
-	Message      *Message       `json:"message,omitempty"`
-	Recipient    *MessageSender `json:"recipient"`
-	SenderAction string         `json:"sender_action,omitempty"`
+	Message      *Message          `json:"message,omitempty"`
+	Recipient    *MessageRecipient `json:"recipient"`
+	SenderAction string            `json:"sender_action,omitempty"`
 }
 
 // Message describes a single message object
@@ -85,8 +85,8 @@ type AttachmentAction struct {
 	FallbackURL         string `json:"fallback_url,omitempty"`
 }
 
-// MessageSender contains the ID of the message's sender
-type MessageSender struct {
+// MessageRecipient contains the ID of the message's recipient
+type MessageRecipient struct {
 	ID string `json:"id"`
 }
 
