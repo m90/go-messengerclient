@@ -47,6 +47,7 @@ func (c *client) Send(payload interface{}) error {
 
 	req.Header.Set("Content-Type", "application/json; charset=utf-8")
 	res, callErr := c.httpClient.Do(req)
+	defer func() { res.Body.Close() }()
 	if callErr != nil {
 		return callErr
 	}
