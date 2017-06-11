@@ -1,4 +1,9 @@
-test:
-	go test -v ./...
+default: vet test
 
-.PHONY: test
+test:
+	go test -cover -v ./...
+
+vet:
+	go vet -v ./...
+
+.PHONY: test vet

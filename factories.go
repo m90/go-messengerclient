@@ -20,7 +20,7 @@ func NewTextMessage(message string) *Message {
 func NewImageMessage(imageURL string) *Message {
 	return &Message{
 		Attachment: &MessageAttachment{
-			Type: "image",
+			Type: ImageMessageAttachmentType,
 			Payload: &MessageAttachmentPayload{
 				URL: imageURL,
 			},
@@ -34,7 +34,7 @@ func NewPostbackButton(title, postback string) *AttachmentButton {
 	return &AttachmentButton{
 		Title:   title,
 		Payload: postback,
-		Type:    "postback",
+		Type:    PostbackAttachmentButtonType,
 	}
 }
 
@@ -42,6 +42,6 @@ func NewPostbackButton(title, postback string) *AttachmentButton {
 func NewMessageAttachment(attachmentType, templateType string) *MessageAttachment {
 	return &MessageAttachment{
 		Type:    attachmentType,
-		Payload: &MessageAttachmentPayload{TemplateType: "generic"},
+		Payload: &MessageAttachmentPayload{TemplateType: GenericTemplateType},
 	}
 }

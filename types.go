@@ -3,6 +3,7 @@ package msngrclient
 const (
 	GenericTemplateType          = "generic"
 	PostbackAttachmentButtonType = "postback"
+	ImageMessageAttachmentType   = "image"
 )
 
 // MessagePayload describes the request body
