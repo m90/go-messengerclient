@@ -4,6 +4,7 @@ const (
 	GenericTemplateType          = "generic"
 	PostbackAttachmentButtonType = "postback"
 	ImageMessageAttachmentType   = "image"
+	TemplateAttachmentType       = "template"
 )
 
 // MessagePayload describes the request body
