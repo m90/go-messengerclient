@@ -1,5 +1,10 @@
 package msngrclient
 
+const (
+	GenericTemplateType          = "generic"
+	PostbackAttachmentButtonType = "postback"
+)
+
 // MessagePayload describes the request body
 // that will be sent to the facebook API
 type MessagePayload struct {
