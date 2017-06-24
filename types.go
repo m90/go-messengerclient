@@ -17,8 +17,16 @@ type MessagePayload struct {
 
 // Message describes a single message object
 type Message struct {
-	Text       string             `json:"text,omitempty"`
-	Attachment *MessageAttachment `json:"attachment,omitempty"`
+	Text         string             `json:"text,omitempty"`
+	Attachment   *MessageAttachment `json:"attachment,omitempty"`
+	QuickReplies *[]QuickReply      `json:"quick_replies,omitempty"`
+}
+
+// QuickReply describes a top level quick reply
+type QuickReply struct {
+	ContentType string `json:"content_type"`
+	Payload     string `json:"payload"`
+	Title       string `json:"title"`
 }
 
 // MessageAttachment describes an attachment
