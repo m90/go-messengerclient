@@ -1,5 +1,6 @@
 package msngrclient
 
+// lists allowed template types
 const (
 	GenericTemplateType          = "generic"
 	PostbackAttachmentButtonType = "postback"

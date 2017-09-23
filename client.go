@@ -12,7 +12,7 @@ var endpoint = "https://graph.facebook.com/v2.6/me/messages"
 
 // Client wraps a configured instance
 type Client interface {
-	Send(MessagePayload) error
+	Send(*MessagePayload) error
 }
 
 type client struct {
@@ -28,7 +28,7 @@ func New(token string) Client {
 }
 
 // Send tries to send the passed request body to the messenger API
-func (c *client) Send(payload MessagePayload) error {
+func (c *client) Send(payload *MessagePayload) error {
 	requestBody, requestBodyErr := json.Marshal(payload)
 	if requestBodyErr != nil {
 		return fmt.Errorf("failed marshaling outbound payload: %v", requestBodyErr)

@@ -49,7 +49,7 @@ func TestSend(t *testing.T) {
 			}))
 			endpoint = ts.URL
 			client := New(test.token)
-			err := client.Send(*test.payload)
+			err := client.Send(test.payload)
 			if !test.fail && err != nil {
 				t.Errorf("Expected clean test end, got %v", err)
 			} else if test.fail && err == nil {
