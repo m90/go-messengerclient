@@ -1,8 +1,12 @@
 package msngrclient
 
+import (
+	"encoding/json"
+)
+
 // NewMessagePayload wraps the passed message and creates a ready
 // to send request body
-func NewMessagePayload(recipientID string, msg *Message) *MessagePayload {
+func NewMessagePayload(recipientID string, msg json.Marshaler) *MessagePayload {
 	return &MessagePayload{
 		Recipient: &MessageRecipient{ID: recipientID},
 		Message:   msg,
