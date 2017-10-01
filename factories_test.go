@@ -13,10 +13,10 @@ func TestNewMessagePayload(t *testing.T) {
 	}{
 		{
 			"abc123",
-			nil,
+			&Message{},
 			&MessagePayload{
 				Recipient:    &MessageRecipient{"abc123"},
-				Message:      nil,
+				Message:      &Message{},
 				SenderAction: "",
 			},
 		},
@@ -37,7 +37,7 @@ func TestNewMessagePayload(t *testing.T) {
 	for _, test := range tests {
 		result := NewMessagePayload(test.senderID, test.message)
 		if !reflect.DeepEqual(result, test.expected) {
-			t.Errorf("Expected %+v, got %+v", test.expected, result)
+			t.Errorf("Expected %#v, got %#v", test.expected, result)
 		}
 	}
 }

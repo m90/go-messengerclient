@@ -1,5 +1,9 @@
 package msngrclient
 
+import (
+	"encoding/json"
+)
+
 // lists allowed template types
 const (
 	GenericTemplateType          = "generic"
@@ -9,9 +13,9 @@ const (
 )
 
 // MessagePayload describes the request body
-// that will be sent to the facebook API
+// that will be sent to the facebook messenger API
 type MessagePayload struct {
-	Message      *Message          `json:"message,omitempty"`
+	Message      json.Marshaler    `json:"message,omitempty"`
 	Recipient    *MessageRecipient `json:"recipient"`
 	SenderAction string            `json:"sender_action,omitempty"`
 }
@@ -21,6 +25,17 @@ type Message struct {
 	Text         string             `json:"text,omitempty"`
 	Attachment   *MessageAttachment `json:"attachment,omitempty"`
 	QuickReplies *[]QuickReply      `json:"quick_replies,omitempty"`
+}
+
+// MarshalJSON returns the messages JSON representation
+func (m *Message) MarshalJSON() ([]byte, error) {
+	return json.Marshal(struct {
+		Text         string             `json:"text,omitempty"`
+		Attachment   *MessageAttachment `json:"attachment,omitempty"`
+		QuickReplies *[]QuickReply      `json:"quick_replies,omitempty"`
+	}{
+		m.Text, m.Attachment, m.QuickReplies,
+	})
 }
 
 // QuickReply describes a top level quick reply
